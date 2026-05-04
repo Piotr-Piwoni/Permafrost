@@ -3,13 +3,16 @@
 #include <QWidget>
 #include "theme/ThemeManager.hpp"
 #include "utilities/QtLoggerAdapter.hpp"
+#include <QHBoxLayout>
 
-namespace Chronicle
+namespace Permafrost
 {
 class Application
 {
 public:
 	Application(int argc, char* argv[], QSize windSize);
+
+	void Render();
 
 	[[nodiscard]] QWidget& GetWindow() const { return *m_Window; }
 

@@ -14,7 +14,7 @@
 #include "utilities/StringUtils.hpp"
 #include "utilities/Time.hpp"
 
-namespace ChronicleEngine::Utils::Logging
+namespace PermafrostEngine::Utils::Logging
 {
 class Logger
 {
@@ -77,36 +77,36 @@ void Logger::Log(const LoggerMsgType level, const std::string& pattern,
 
 
 #define lInfo(pattern, ...) \
-ChronicleEngine::Utils::Logging::Logger::Log( \
-ChronicleEngine::Utils::Logging::LoggerMsgType::Info, \
+PermafrostEngine::Utils::Logging::Logger::Log( \
+PermafrostEngine::Utils::Logging::LoggerMsgType::Info, \
 pattern, \
 std::source_location::current(), \
 ##__VA_ARGS__)
 
 #define lDebug(pattern, ...) \
-ChronicleEngine::Utils::Logging::Logger::Log( \
-ChronicleEngine::Utils::Logging::LoggerMsgType::Debug, \
+PermafrostEngine::Utils::Logging::Logger::Log( \
+PermafrostEngine::Utils::Logging::LoggerMsgType::Debug, \
 pattern, \
 std::source_location::current(), \
 ##__VA_ARGS__)
 
 #define lWarn(pattern, ...) \
-ChronicleEngine::Utils::Logging::Logger::Log( \
-ChronicleEngine::Utils::Logging::LoggerMsgType::Warning, \
+PermafrostEngine::Utils::Logging::Logger::Log( \
+PermafrostEngine::Utils::Logging::LoggerMsgType::Warning, \
 pattern, \
 std::source_location::current(), \
 ##__VA_ARGS__)
 
 #define lError(pattern, ...) \
-ChronicleEngine::Utils::Logging::Logger::Log( \
-ChronicleEngine::Utils::Logging::LoggerMsgType::Error, \
+PermafrostEngine::Utils::Logging::Logger::Log( \
+PermafrostEngine::Utils::Logging::LoggerMsgType::Error, \
 pattern, \
 std::source_location::current(), \
 ##__VA_ARGS__)
 
 #define lFatal(pattern, ...) \
-ChronicleEngine::Utils::Logging::Logger::Log( \
-ChronicleEngine::Utils::Logging::LoggerMsgType::Fatal, \
+PermafrostEngine::Utils::Logging::Logger::Log( \
+PermafrostEngine::Utils::Logging::LoggerMsgType::Fatal, \
 pattern, \
 std::source_location::current(), \
 ##__VA_ARGS__)

@@ -4,7 +4,7 @@
 #include <string_view>
 #include <format>
 
-namespace ChronicleEngine::Utils
+namespace PermafrostEngine::Utils
 {
 class Channel
 {
@@ -139,14 +139,14 @@ public:
 
 
 template<>
-struct std::formatter<ChronicleEngine::Utils::Channel, char>
+struct std::formatter<PermafrostEngine::Utils::Channel, char>
 {
 	static constexpr auto parse(std::format_parse_context& ctx)
 	{
 		return ctx.begin();
 	}
 
-	static auto format(const ChronicleEngine::Utils::Channel& c, std::format_context& ctx)
+	static auto format(const PermafrostEngine::Utils::Channel& c, std::format_context& ctx)
 	{
 		return std::format_to(ctx.out(), "{}", c.AsInt());
 	}

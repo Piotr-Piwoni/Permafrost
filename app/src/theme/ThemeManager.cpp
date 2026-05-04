@@ -1,6 +1,6 @@
 ﻿#include "ThemeManager.hpp"
 
-namespace Chronicle
+namespace Permafrost
 {
 void ThemeManager::SetTheme(const std::string_view path)
 {

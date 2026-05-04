@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include <cstdint>
 
-namespace ChronicleEngine::Utils::Logging
+namespace PermafrostEngine::Utils::Logging
 {
 enum class LoggerMsgType : std::uint8_t
 {

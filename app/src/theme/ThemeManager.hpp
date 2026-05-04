@@ -4,7 +4,7 @@
 #include <qobject.h>
 #include "utilities/logging/Logger.hpp"
 
-namespace Chronicle
+namespace Permafrost
 {
 class ThemeManager final : public QObject
 {

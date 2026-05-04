@@ -1,6 +1,6 @@
 ﻿#include "Logger.hpp"
 
-namespace ChronicleEngine::Utils::Logging
+namespace PermafrostEngine::Utils::Logging
 {
 void Logger::Init(const std::filesystem::path& filePath)
 {

@@ -2,7 +2,7 @@
 #include <regex>
 #include <string>
 
-namespace ChronicleEngine::Utils
+namespace PermafrostEngine::Utils
 {
 inline std::string RemoveWhiteSpaces(const std::string& text)
 {

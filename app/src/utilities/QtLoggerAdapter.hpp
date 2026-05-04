@@ -1,12 +1,11 @@
 ﻿#pragma once
 #include <QDateTime>
 #include <QtLogging>
-
 #include "utilities/logging/Logger.hpp"
 
-namespace Chronicle::Utils
+namespace Permafrost::Utils
 {
-class QtLoggerAdapter : public ChronicleEngine::Utils::Logging::Logger
+class QtLoggerAdapter : public PermafrostEngine::Utils::Logging::Logger
 {
 public:
 	static void Init(const std::filesystem::path& filePath)
@@ -28,7 +27,7 @@ public:
 			return;
 		}
 
-		ChronicleEngine::Utils::Logging::LoggerGuard guard(inLogger);
+		PermafrostEngine::Utils::Logging::LoggerGuard guard(inLogger);
 		// Construct message components.
 		std::string time = QDateTime::currentDateTime()
 						   .toString("yyyy-MM-dd hh:mm:ss.zzz").toStdString();
@@ -39,9 +38,9 @@ public:
 		LogInternal(ToLoggerMsgType(type), time, file, line, function, message);
 	}
 
-	static ChronicleEngine::Utils::Logging::LoggerMsgType ToLoggerMsgType(QtMsgType type)
+	static PermafrostEngine::Utils::Logging::LoggerMsgType ToLoggerMsgType(QtMsgType type)
 	{
-		using enum ChronicleEngine::Utils::Logging::LoggerMsgType;
+		using enum PermafrostEngine::Utils::Logging::LoggerMsgType;
 		switch (type)
 		{
 		case QtInfoMsg: return Info;

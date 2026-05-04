@@ -2,7 +2,7 @@
 #include <chrono>
 #include <string>
 
-namespace ChronicleEngine::Utils
+namespace PermafrostEngine::Utils
 {
 inline std::string GetTime()
 {
