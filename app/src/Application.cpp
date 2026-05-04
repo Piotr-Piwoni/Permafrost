@@ -20,48 +20,17 @@ Application::Application(int argc, char* argv[], const QSize windSize)
 	m_ThemeManager->SetTheme(":/themes/dark-mode");
 
 	// Create the context window.
-	m_Window = std::make_unique<QWidget>();
-	m_Window->setObjectName("context");
-	m_Window->resize(windSize);
+	m_Window = std::make_unique<QGraphicsScene>();
+	m_Window->setSceneRect(0L, 0L, windSize.width(), windSize.height());
+
+	// Set up Camera.
+	m_Camera = std::make_unique<Camera>(m_Window.get());
+	m_Camera->setObjectName("context");
 }
 
 
 void Application::Render()
 {
-	// ReSharper disable once CppDFAMemoryLeak
-	auto* characterSheetLayout = new QVBoxLayout(m_Window.get());
-	// ReSharper disable once CppDFAMemoryLeak
-	auto header = new QWidget();
-	header->setMinimumHeight(50);
-	header->setMaximumHeight(112);
-	header->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
-	characterSheetLayout->addWidget(header);
-
-
-	// ReSharper disable once CppDFAMemoryLeak
-	auto contentLayout = new QHBoxLayout();
-	characterSheetLayout->addLayout(contentLayout);
-
-	// Left Side.
-	// ReSharper disable once CppDFAMemoryLeak
-	auto infoLayout = new QVBoxLayout();
-	contentLayout->addLayout(infoLayout, 1);
-
-	// ReSharper disable once CppDFAMemoryLeak
-	auto* infoBox1 = new QWidget();
-	// ReSharper disable once CppDFAMemoryLeak
-	auto infoBox2 = new QWidget();
-	infoLayout->addWidget(infoBox1, 1);
-	infoLayout->addWidget(infoBox2, 1);
-
-	// Right Side.
-	// ReSharper disable once CppDFAMemoryLeak
-	auto skillBox = new QWidget();
-	contentLayout->addWidget(skillBox, 2);
-
-	characterSheetLayout->setContentsMargins(10, 10, 10, 10);
-	characterSheetLayout->setSpacing(10);
-
-	m_Window->show();
+	m_Camera->show();
 }
 }

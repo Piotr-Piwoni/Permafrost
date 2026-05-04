@@ -1,9 +1,9 @@
 ﻿#pragma once
 #include <QApplication>
-#include <QWidget>
 #include "theme/ThemeManager.hpp"
 #include "utilities/QtLoggerAdapter.hpp"
-#include <QHBoxLayout>
+#include <QGraphicsScene>
+#include "Camera.hpp"
 
 namespace Permafrost
 {
@@ -14,12 +14,13 @@ public:
 
 	void Render();
 
-	[[nodiscard]] QWidget& GetWindow() const { return *m_Window; }
+	//[[nodiscard]] QWidget& GetWindow() const { return *m_Window; }
 
 private:
 	std::unique_ptr<QApplication> m_QtApp{nullptr};
 	std::unique_ptr<ThemeManager> m_ThemeManager{nullptr};
 
-	std::unique_ptr<QWidget> m_Window{nullptr};
+	std::unique_ptr<QGraphicsScene> m_Window{nullptr};
+	std::unique_ptr<Camera> m_Camera{nullptr};
 };
 }

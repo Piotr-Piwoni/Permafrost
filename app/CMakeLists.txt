@@ -15,7 +15,8 @@ add_executable(App
                src/theme/ThemeManager.hpp
                src/Application.cpp
                src/Application.hpp
-               src/utilities/QtLoggerAdapter.hpp)
+               src/utilities/QtLoggerAdapter.hpp
+               src/Camera.hpp)
 
 target_link_libraries(App PRIVATE
                       Engine

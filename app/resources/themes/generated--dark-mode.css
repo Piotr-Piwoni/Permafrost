@@ -8,3 +8,7 @@
   background-color: #0d0c02;
   border: none;
 }
+
+#cell {
+  background-color: red;
+}
