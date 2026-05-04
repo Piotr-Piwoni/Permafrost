@@ -5,7 +5,10 @@
 #include <QGraphicsScene>
 #include <QGraphicsRectItem>
 #include <QGraphicsItemGroup>
+
+#include "Board.hpp"
 #include "Camera.hpp"
+#include "BoardCell.hpp"
 
 namespace Permafrost
 {
@@ -25,9 +28,6 @@ private:
 
 	std::unique_ptr<QGraphicsScene> m_Window{nullptr};
 	std::unique_ptr<Camera> m_Camera{nullptr};
-	std::unique_ptr<QGraphicsItemGroup> m_Board{nullptr};
-
-	const double kCellSize{40};
-	const int kBoardSize{10}; //< Board size and +2 for the border.
+	std::unique_ptr<Board> m_Board{nullptr};
 };
 }

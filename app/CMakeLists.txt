@@ -16,7 +16,9 @@ add_executable(App
                src/Application.cpp
                src/Application.hpp
                src/utilities/QtLoggerAdapter.hpp
-               src/Camera.hpp)
+               src/Camera.hpp
+               src/BoardCell.hpp
+               src/Board.hpp)
 
 target_link_libraries(App PRIVATE
                       Engine
