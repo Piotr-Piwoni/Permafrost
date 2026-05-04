@@ -3,6 +3,8 @@
 #include "theme/ThemeManager.hpp"
 #include "utilities/QtLoggerAdapter.hpp"
 #include <QGraphicsScene>
+#include <QGraphicsRectItem>
+#include <QGraphicsItemGroup>
 #include "Camera.hpp"
 
 namespace Permafrost
@@ -14,7 +16,8 @@ public:
 
 	void Render();
 
-	//[[nodiscard]] QWidget& GetWindow() const { return *m_Window; }
+private:
+	void OnResize();
 
 private:
 	std::unique_ptr<QApplication> m_QtApp{nullptr};
@@ -22,5 +25,9 @@ private:
 
 	std::unique_ptr<QGraphicsScene> m_Window{nullptr};
 	std::unique_ptr<Camera> m_Camera{nullptr};
+	std::unique_ptr<QGraphicsItemGroup> m_Board{nullptr};
+
+	const double kCellSize{40};
+	const int kBoardSize{10}; //< Board size and +2 for the border.
 };
 }
