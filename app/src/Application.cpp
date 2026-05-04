@@ -67,8 +67,7 @@ void Application::Render()
 
 			cell->setParentItem(m_Board.get());
 		}
-
-
+	
 	m_Camera->show();
 }
 

@@ -10,6 +10,7 @@ find_package(Qt6 REQUIRED COMPONENTS Core Gui Widgets)
 
 add_executable(App
                resources/themes/themes.qrc
+               resources/sprites/pieces/pieces.qrc
                src/main.cpp
                src/theme/ThemeManager.cpp
                src/theme/ThemeManager.hpp

@@ -1,0 +1,40 @@
+<RCC>
+    <qresource prefix="/pieces">
+        <file>256px/b_bishop.png</file>
+        <file>256px/b_king.png</file>
+        <file>256px/b_knight.png</file>
+        <file>256px/b_pawn.png</file>
+        <file>256px/b_queen.png</file>
+        <file>256px/b_rook.png</file>
+        <file>256px/w_bishop.png</file>
+        <file>256px/w_king.png</file>
+        <file>256px/w_knight.png</file>
+        <file>256px/w_pawn.png</file>
+        <file>256px/w_queen.png</file>
+        <file>256px/w_rook.png</file>
+        <file>512px/b_bishop.png</file>
+        <file>512px/b_king.png</file>
+        <file>512px/b_knight.png</file>
+        <file>512px/b_pawn.png</file>
+        <file>512px/b_queen.png</file>
+        <file>512px/b_rook.png</file>
+        <file>512px/w_bishop.png</file>
+        <file>512px/w_king.png</file>
+        <file>512px/w_knight.png</file>
+        <file>512px/w_pawn.png</file>
+        <file>512px/w_queen.png</file>
+        <file>512px/w_rook.png</file>
+        <file>1024px/b_bishop.png</file>
+        <file>1024px/b_king.png</file>
+        <file>1024px/b_knight.png</file>
+        <file>1024px/b_pawn.png</file>
+        <file>1024px/b_queen.png</file>
+        <file>1024px/b_rook.png</file>
+        <file>1024px/w_bishop.png</file>
+        <file>1024px/w_king.png</file>
+        <file>1024px/w_knight.png</file>
+        <file>1024px/w_pawn.png</file>
+        <file>1024px/w_queen.png</file>
+        <file>1024px/w_rook.png</file>
+    </qresource>
+</RCC>
