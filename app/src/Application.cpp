@@ -5,7 +5,7 @@ namespace Permafrost
 Application::Application(int argc, char* argv[], const QSize windSize)
 {
 	m_QtApp = std::make_unique<QApplication>(argc, argv);
-	QApplication::setApplicationName("Project");
+	QApplication::setApplicationName("Permafrost - Chess Engine");
 
 	// Enable logging.
 	auto filePath = QCoreApplication::applicationDirPath() + "/app.log";
