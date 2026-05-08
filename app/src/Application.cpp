@@ -23,6 +23,14 @@ Application::Application(int argc, char* argv[], const QSize windSize)
 	m_Window = std::make_unique<QGraphicsScene>();
 	m_Window->setSceneRect(0, 0, windSize.width(), windSize.height());
 
+	// Set up Event System.
+	m_Window->addItem(&m_EventSystem);
+	m_EventSystem.setFlag(QGraphicsItem::ItemIsFocusable);
+	m_EventSystem.setFocus();
+	m_EventSystem.SetOnKeyPressedCallback([this](QKeyEvent* event) {
+		OnKeyPressed(event);
+	});
+
 	// Set up Camera.
 	m_Camera = std::make_unique<Camera>(m_Window.get());
 	m_Camera->setObjectName("context");
@@ -32,9 +40,10 @@ Application::Application(int argc, char* argv[], const QSize windSize)
 	m_Camera->setMouseTracking(true);
 
 	// Initialise board.
-	m_BoardUI = std::make_unique<BoardUI>();
+	m_BoardUI = std::make_unique<UI::BoardUI>();
 	m_Window->addItem(m_BoardUI.get());
 	m_Engine.AddListener(m_BoardUI.get());
+	srand(0);
 }
 
 
@@ -51,4 +60,6 @@ void Application::OnResize()
 	double yCenterBoard = (m_Window->height() - m_Engine.Board.GetWidth()) / 2;
 	m_BoardUI->setPos({xCenterBoard, yCenterBoard});
 }
+
+void Application::OnKeyPressed(QKeyEvent* event) {}
 }

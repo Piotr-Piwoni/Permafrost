@@ -1,11 +1,11 @@
 #pragma once
-#include <QGraphicsRectItem>
-#include <QColor>
 #include <QBrush>
+#include <QColor>
+#include <QGraphicsRectItem>
 
-namespace Permafrost
+namespace Permafrost::UI
 {
-class BoardCell : public QGraphicsRectItem
+class CellUI final : public QGraphicsRectItem
 {
 public:
 	using QGraphicsRectItem::QGraphicsRectItem;

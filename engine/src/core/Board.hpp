@@ -20,7 +20,7 @@ public:
 
 	void SetBorderWidth(unsigned int size)
 	{
-		m_BorderWidth = size * 2;
+		m_BorderWidth = size * 2; //< Times 2 as to account for both sides.
 		m_NotifyFunc();
 	}
 

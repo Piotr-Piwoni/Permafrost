@@ -1,10 +1,12 @@
 #pragma once
 #include <QGraphicsItem>
 
+#include "CellUI.hpp"
+#include "../utilities/QtHelperFunctions.hpp"
 #include "core/IEngineListener.hpp"
-#include "utilities/QtHelperFunctions.hpp"
+#include "utilities/logging/Logger.hpp"
 
-namespace Permafrost
+namespace Permafrost::UI
 {
 class BoardUI final : public QGraphicsItem, public PermafrostEngine::Core::IEngineListener
 {
@@ -30,14 +32,15 @@ public:
 		// Clear the UI.
 		Utilis::QtHelpers::DeleteAllChildren(this);
 
+		lDebug("Board: {}, Border: {}", m_BoardSize, m_BorderWidth);
 		unsigned int size = m_BoardSize + m_BorderWidth;
 		// Create chess board.
 		for (int row = 0; row < size; row++)
 			for (int column = 0; column < size; column++)
 			{
 				// ReSharper disable once CppDFAMemoryLeak
-				auto cell = new BoardCell(column * m_CellSize, row * m_CellSize,
-										  m_CellSize, m_CellSize);
+				auto cell = new CellUI(column * m_CellSize, row * m_CellSize,
+									   m_CellSize, m_CellSize);
 				cell->setAcceptHoverEvents(true);
 
 				// Border.
@@ -63,7 +66,10 @@ public:
 	{
 		m_BoardSize = size;
 		m_CellSize = cellSize;
-		m_BorderWidth = borderWidth;
+		m_BorderWidth = borderWidth * 2;
+
+		// Re-create the chessboard.
+		CreateChessboard();
 	}
 
 private:
