@@ -32,50 +32,23 @@ Application::Application(int argc, char* argv[], const QSize windSize)
 	m_Camera->setMouseTracking(true);
 
 	// Initialise board.
-	m_Board = std::make_unique<Board>();
-	m_Window->addItem(m_Board.get());
+	m_BoardUI = std::make_unique<BoardUI>();
+	m_Window->addItem(m_BoardUI.get());
+	m_Engine.AddListener(m_BoardUI.get());
 }
 
 
 void Application::Render()
 {
-	// Create chess board.
-	for (int row = 0; row < m_Board->GetSize(); row++)
-		for (int column = 0; column < m_Board->GetSize(); column++)
-		{
-			// ReSharper disable once CppDFAMemoryLeak
-			auto cell = new BoardCell(column * m_Board->GetCellSize(),
-									  row * m_Board->GetCellSize(),
-									  m_Board->GetCellSize(),
-									  m_Board->GetCellSize());
-			cell->setAcceptHoverEvents(true);
-
-			// Border.
-			if (row == 0 || row == m_Board->GetBoardSize() ||
-				column == 0 || column == m_Board->GetBoardSize())
-			{
-				cell->SetColour(QColor{Qt::darkRed});
-				cell->setAcceptHoverEvents(false);
-				cell->setParentItem(m_Board.get());
-				continue;
-			}
-
-
-			// Playable cell.
-			if ((column + row) % 2 == 0) cell->SetColour(QColor{Qt::white});
-			else cell->SetColour(QColor{Qt::gray});
-
-			cell->setParentItem(m_Board.get());
-		}
-	
+	m_BoardUI->CreateChessboard();
 	m_Camera->show();
 }
 
 
 void Application::OnResize()
 {
-	double xCenterBoard = (m_Window->width() - m_Board->GetWidth()) / 2;
-	double yCenterBoard = (m_Window->height() - m_Board->GetWidth()) / 2;
-	m_Board->setPos({xCenterBoard, yCenterBoard});
+	double xCenterBoard = (m_Window->width() - m_Engine.Board.GetWidth()) / 2;
+	double yCenterBoard = (m_Window->height() - m_Engine.Board.GetWidth()) / 2;
+	m_BoardUI->setPos({xCenterBoard, yCenterBoard});
 }
 }

@@ -9,7 +9,12 @@ add_library(Engine STATIC
             src/utilities/logging/LoggingTypes.hpp
             src/utilities/Colour.hpp
             src/utilities/StringUtils.hpp
-            src/utilities/Time.hpp)
+            src/utilities/Time.hpp
+            src/core/Engine.cpp
+            src/core/Engine.hpp
+            src/core/IEngineListener.hpp
+            src/core/Board.hpp
+            src/core/IEvent.hpp)
 
 target_include_directories(Engine PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
