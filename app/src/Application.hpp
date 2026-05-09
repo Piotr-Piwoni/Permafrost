@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 #include <QApplication>
 
 #include "Camera.hpp"
@@ -7,6 +7,7 @@
 #include "theme/ThemeManager.hpp"
 #include "ui/BoardUI.hpp"
 #include "utilities/QtLoggerAdapter.hpp"
+#include "utilities/TextureManager.hpp"
 
 namespace Permafrost
 {
@@ -30,5 +31,6 @@ private:
 	std::unique_ptr<UI::BoardUI> m_BoardUI{nullptr};
 	PermafrostEngine::Core::Engine m_Engine{};
 	EventSystem m_EventSystem{};
+	Utils::TextureManager m_TextureManager{};
 };
 }

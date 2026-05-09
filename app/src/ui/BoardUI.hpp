@@ -32,7 +32,6 @@ public:
 		// Clear the UI.
 		Utilis::QtHelpers::DeleteAllChildren(this);
 
-		lDebug("Board: {}, Border: {}", m_BoardSize, m_BorderWidth);
 		unsigned int size = m_BoardSize + m_BorderWidth;
 		// Create chess board.
 		for (int row = 0; row < size; row++)
