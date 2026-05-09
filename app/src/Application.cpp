@@ -35,6 +35,7 @@ Application::Application(int argc, char* argv[], const QSize windSize)
 	m_Camera = std::make_unique<Camera>(m_Window.get());
 	m_Camera->setObjectName("context");
 	m_Camera->setResizeAnchor(QGraphicsView::AnchorViewCenter);
+	m_Camera->setViewportUpdateMode(QGraphicsView::FullViewportUpdate);
 	m_Camera->OnResizeCallback([this] { OnResize(); });
 	m_Camera->viewport()->setMouseTracking(true);
 	m_Camera->setMouseTracking(true);
@@ -43,7 +44,8 @@ Application::Application(int argc, char* argv[], const QSize windSize)
 	m_BoardUI = std::make_unique<UI::BoardUI>();
 	m_Window->addItem(m_BoardUI.get());
 	m_Engine.AddListener(m_BoardUI.get());
-	srand(0);
+
+	m_TextureManager.LoadPixmap(":/pieces/256px/b_king.png", "black king");
 }
 
 
@@ -61,5 +63,9 @@ void Application::OnResize()
 	m_BoardUI->setPos({xCenterBoard, yCenterBoard});
 }
 
-void Application::OnKeyPressed(QKeyEvent* event) {}
+void Application::OnKeyPressed(QKeyEvent* event)
+{
+	if (event->key() == Qt::Key::Key_K)
+		m_BoardUI->SetShowNumbers(!m_BoardUI->ShowNumbers());
+}
 }
