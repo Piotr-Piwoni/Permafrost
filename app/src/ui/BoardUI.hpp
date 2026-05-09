@@ -75,10 +75,7 @@ public:
 			text->setDefaultTextColor(QColor{Qt::black});
 			text->setVisible(m_ShowNumbers);
 
-			auto pos = cellUI->scenePos();
-			pos.setX(pos.x() + cellUI->boundingRect().x());
-			pos.setY(pos.y() + cellUI->boundingRect().y());
-			text->setPos(pos);
+			text->setPos(cellUI->boundingRect().topLeft());
 			index++;
 		}
 	}

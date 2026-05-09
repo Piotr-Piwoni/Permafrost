@@ -6,6 +6,7 @@
 #include "core/Engine.hpp"
 #include "theme/ThemeManager.hpp"
 #include "ui/BoardUI.hpp"
+#include "ui/PieceUI.hpp"
 #include "utilities/QtLoggerAdapter.hpp"
 #include "utilities/TextureManager.hpp"
 
@@ -21,6 +22,7 @@ public:
 private:
 	void OnResize();
 	void OnKeyPressed(QKeyEvent* event);
+	void SetupPieces();
 
 private:
 	std::unique_ptr<QApplication> m_QtApp{nullptr};

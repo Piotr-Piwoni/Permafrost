@@ -14,7 +14,8 @@ add_library(Engine STATIC
             src/core/Engine.hpp
             src/core/IEngineListener.hpp
             src/core/Board.hpp
-            src/core/IEvent.hpp)
+            src/core/IEvent.hpp
+            src/core/pieces/Piece.hpp)
 
 target_include_directories(Engine PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
