@@ -23,6 +23,7 @@ private:
 	void OnResize();
 	void OnKeyPressed(QKeyEvent* event);
 	void SetupPieces();
+	void UpdatePiecesUIPosition();
 
 private:
 	std::unique_ptr<QApplication> m_QtApp{nullptr};
@@ -34,5 +35,6 @@ private:
 	PermafrostEngine::Core::Engine m_Engine{};
 	EventSystem m_EventSystem{};
 	Utils::TextureManager m_TextureManager{};
+	std::vector<std::unique_ptr<UI::PieceUI>> m_PiecesUIs{};
 };
 }

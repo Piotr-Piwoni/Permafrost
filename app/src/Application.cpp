@@ -77,6 +77,7 @@ void Application::OnResize()
 	double xCenterBoard = (m_Window->width() - m_Engine.Board.GetWidth()) / 2;
 	double yCenterBoard = (m_Window->height() - m_Engine.Board.GetWidth()) / 2;
 	m_BoardUI->setPos({xCenterBoard, yCenterBoard});
+	UpdatePiecesUIPosition();
 }
 
 void Application::OnKeyPressed(QKeyEvent* event)
@@ -87,15 +88,17 @@ void Application::OnKeyPressed(QKeyEvent* event)
 
 void Application::SetupPieces()
 {
+	m_PiecesUIs.clear();
+
 	m_Engine.SetupPieces();
 	auto boardCells = m_BoardUI->GetPlayableArea();
 	const auto& pieces = m_Engine.GetGamePieces();
 
+	m_PiecesUIs.reserve(pieces.size());
 	for (auto& piece : pieces)
 	{
-		// ReSharper disable once CppDFAMemoryLeak
-		auto pieceUI = new UI::PieceUI();
-		m_Window->addItem(pieceUI);
+		auto& pieceUI = m_PiecesUIs.emplace_back(std::make_unique<UI::PieceUI>());
+		m_Window->addItem(pieceUI.get());
 
 		// Set texture based on type and team.
 		switch (piece->Type)
@@ -130,13 +133,24 @@ void Application::SetupPieces()
 			else pieceUI->setPixmap(*m_TextureManager.GetPixmap("BKing"));
 			break;
 		}
-
-		// Put the piece in the correct cell.
-		pieceUI->setScale(0.1);
-		pieceUI->setPos(boardCells[piece->Index]->sceneBoundingRect().x() +
-						pieceUI->sceneBoundingRect().width() / 2 - 2,
-						boardCells[piece->Index]->sceneBoundingRect().y() +
-						pieceUI->sceneBoundingRect().height() / 2);
+		pieceUI->setScale(0.125);
 	}
+
+	// Put the piece in the correct cell.
+	UpdatePiecesUIPosition();
+}
+
+void Application::UpdatePiecesUIPosition()
+{
+	if (m_PiecesUIs.empty()) return;
+
+	auto boardCells = m_BoardUI->GetPlayableArea();
+	auto& pieces = m_Engine.GetGamePieces();
+	// Put the piece in the correct cell.
+	for (int i = 0; i < pieces.size(); i++)
+		m_PiecesUIs[i]->setPos(boardCells[pieces[i]->CellIndex]->sceneBoundingRect().x() +
+							   m_PiecesUIs[i]->sceneBoundingRect().width() / 2 - 10,
+							   boardCells[pieces[i]->CellIndex]->sceneBoundingRect().y() +
+							   m_PiecesUIs[i]->sceneBoundingRect().height() / 2 - 7);
 }
 }

@@ -18,11 +18,11 @@ struct Piece
 {
 	explicit Piece(unsigned int index = 0, PieceType type = PieceType::Pawn,
 				   bool isWhite = true) :
-		IsWhite{isWhite}, Index{index}, Type{type} {}
+		IsWhite{isWhite}, CellIndex{index}, Type{type} {}
 
 
 	bool IsWhite{false};
-	unsigned int Index{0};
+	unsigned int CellIndex{0};
 	PieceType Type{PieceType::None};
 };
 }
